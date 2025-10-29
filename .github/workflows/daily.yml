@@ -1,0 +1,27 @@
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ 코드 가져오기
+      - uses: actions/checkout@v3
+
+      # 2️⃣ 파이썬 환경 설치
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3️⃣ 의존성 설치
+      - name: Install dependencies
+        run: | # 오타가 아니라, 여러 줄 명령어를 하나의 블록 단위로 지정함
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4️⃣ main.py 실행
+      - name: Run main script
+        run: python main.py
