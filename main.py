@@ -1,3 +1,4 @@
+from kakao_manager import KakaoManager
 from news_manager import NewsManager
 from stock_manager import StockManager
 from email_manager import EmailManager
@@ -6,6 +7,7 @@ import yfinance
 stock_manager = StockManager()
 news_manager = NewsManager()
 email_manager = EmailManager()
+kakao_manager = KakaoManager()
 
 high_change_stocks = stock_manager.stocks_over_5pct_change()
 
@@ -24,6 +26,7 @@ for ticker in stock_manager.tickers:
                            f"\n")
 
     email_manager.send_email_to_me(subject=email_subject, contents=email_contents)
+    kakao_manager.send_message(contents=email_contents)
 
 if len(high_change_stocks) == 0:
     pass
@@ -42,3 +45,4 @@ else:
                                f"\n")
 
         email_manager.send_email_to_me(subject=email_subject, contents=email_contents)
+        kakao_manager.send_message(contents=email_contents)
