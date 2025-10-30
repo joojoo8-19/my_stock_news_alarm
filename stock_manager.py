@@ -54,7 +54,7 @@ class StockManager:
 
         for ticker in tickers:
             ticker_data = self.fetch_ticker(ticker)
-            if ticker_data.growth_rate>= 5 or ticker_data.growth_rate <= -5:
+            if ticker_data.growth_rate*100>= 5 or ticker_data.growth_rate*100 <= -5:
                 high_change_stocks.append(ticker_data)
 
         return high_change_stocks
