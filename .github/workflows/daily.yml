@@ -24,4 +24,10 @@ jobs:
 
       # 4️⃣ main.py 실행
       - name: Run main script
+        env:
+          ALPHA_VANTAGE_API: ${{ secrets.ALPHA_VANTAGE_API }}
+          NEWS_API: ${{ secrets.NEWS_API }}
+          KAKAO_REST_API: ${{ secrets.KAKAO_REST_API }}
+          MY_EMAIL_PASSWORD: ${{ secrets.MY_EMAIL_PASSWORD }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
         run: python main.py
